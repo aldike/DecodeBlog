@@ -16,18 +16,18 @@
         <h3 class="h3">Вход</h3>
         <form action="/api/signup" method="POST" class="form">
             <fieldset class="fieldset">
-                <input type="email" placeholder="Введите E-mail">
+                <input type="email" placeholder="Введите E-mail" name="email">
             </fieldset>
             <fieldset class="fieldset">
-                <input type="text" placeholder="Введите полное имя">
+                <input type="text" placeholder="Введите полное имя" name="full_name">
             </fieldset>
             <fieldset class="fieldset">
-                <input type="text" placeholder="Введите пароль">
+                <input type="text" placeholder="Введите пароль" name="password">
             </fieldset>
             <fieldset class="fieldset">
-                <input type="text" placeholder="Подтвердите пароль">
+                <input type="text" placeholder="Подтвердите пароль" name="re_password">
             </fieldset>
-            <button class="edit-btn">Зарегистрироваться</button>
+            <button type="submit" class="edit-btn">Зарегистрироваться</button>
         </form>
     </div>
 </body>
