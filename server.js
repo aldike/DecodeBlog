@@ -2,32 +2,15 @@ const express = require('express');
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'))
+require('./server/config/db');
+
+app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({extended: false}));
+
 app.set("view engine", "ejs");
 
-app.get('/', (req, res) =>{
-    res.render("index")
-})
-app.get('/myblogs', (req, res) =>{
-    res.render("myblogs")
-})
-app.get('/blog', (req, res) =>{
-    res.render("blog")
-})
-app.get('/blog-nolog', (req, res) =>{
-    res.render("blog-nolog")
-})
-app.get('/new-blog', (req, res) =>{
-    res.render("new-blog")
-})
-
-app.get('/login', (req, res) =>{
-    res.render("login")
-})
-
-app.get('/registration', (req, res) =>{
-    res.render("registration")
-})
+app.use(require('./server/pages/router'));
+app.use(require('./server/auth/router'));
 
 const PORT = 8000;
 
