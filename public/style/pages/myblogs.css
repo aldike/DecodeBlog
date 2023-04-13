@@ -1,0 +1,49 @@
+.head-img{
+    width: 40%;
+    margin-left: auto;
+}
+.head-img img{
+    height: 100%;
+    width: 100%;
+}
+.main-top{
+    display: flex;
+    justify-content: space-between;
+}
+.content-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.content-top p{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3px;
+}
+.user{
+    height: 60vh;
+    width: 20%;
+    padding: 3% 3%;
+    background-color: #fff;
+    margin: 0 2% 0 2%;
+    display: flex;
+    flex-direction: column;
+}
+.user p{
+    text-align: center;
+    margin: 5px 0;
+}
+.user p:first-child{
+    font-weight: 700;
+    font-size: 26px;
+}
+.edit-btn{
+    color: #fff;
+    padding: 10px 10px;
+    background: #00A2DC;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px;
+    margin: 20px 0;
+}

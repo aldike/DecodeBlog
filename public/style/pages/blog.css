@@ -1,0 +1,21 @@
+.user-comm{
+    margin: 3% 0;
+}
+.comm-user{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5%;
+}
+.comm-img{
+    width: 10%;
+    margin-right: 5%;
+}
+.comm-img img{
+    height: 100%;
+    width: 100%;
+}
+.log-notify{
+    background: #FFF3CD;
+    border-radius: 4px;
+    padding: 3%;
+}

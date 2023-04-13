@@ -1,0 +1,30 @@
+.new-blog{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.new-blog input{
+    padding: 10px;
+}
+.new-blog textarea{
+    padding: 10px;
+}
+.select-img{
+    font-weight: 700;
+    width: 20%;
+    padding: 10px;
+    background: #FFF72F;
+    border: 1px solid #FFF72F;
+    border-radius: 4px;
+}
+.cat-select{
+    color: #6e6e6e;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px;
+}

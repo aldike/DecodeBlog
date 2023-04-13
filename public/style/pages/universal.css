@@ -1,0 +1,49 @@
+body{
+    background: #F5F5F5;
+}
+a{
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: #007BFF;
+}
+input, textarea{
+    font-weight: 500;
+    font-size: 16px;
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid #E7E7E7;
+}
+.main{
+    min-height: 100vh;
+    width: 70%;
+    padding: 3% 3%;
+    background-color: #fff;
+}
+.main-content h3{
+    text-align: center;
+}
+.toggle-dropdown{
+    cursor: pointer;
+}
+.content-dropdown{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    right: 0;
+    bottom: -8vh;
+    background-color: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+.content-dropdown span{
+    font-weight: 700;
+    padding: 10px 15px;
+}
+.content-dropdown span:hover{
+    color: red;
+}
+.show{
+    display: flex;
+}

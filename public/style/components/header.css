@@ -1,0 +1,41 @@
+header{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+}
+.head-logo{
+    width: 30%;
+    margin: 5% 5%;
+}
+.logo{
+    font-weight: 500;
+    font-size: 50px;
+    color: #00A2DC;
+}
+.head-search{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.head-search input{
+    border-radius: 4px 0px 0px 4px;
+}
+.head-search>button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 4px 4px 0px;
+}
+.head-buttons{
+    margin-right: 5%;
+}
+.head-btn{
+    color: #fff;
+    padding: 10px 10px;
+    background: #00A2DC;
+    border: 1px solid #E7E7E7;
+    border-radius: 4px;
+}
