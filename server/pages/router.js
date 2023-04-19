@@ -5,7 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) =>{
     res.render("index", {user:req.user ? req.user: {}})
 })
-router.get('/myblogs:id', (req, res) =>{
+router.get('/myblogs/:id', (req, res) =>{
     res.render("myblogs", {user:req.user ? req.user: {}})
 })
 router.get('/blog', (req, res) =>{
