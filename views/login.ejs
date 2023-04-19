@@ -13,10 +13,25 @@
         </div>
     </header>
     <div class="login-fill">
-        <h3 class="h3">Вход</h3>
+        <!-- <h3 class="h3">Вход</h3>
         <input type="text" placeholder="Введите E-mail">
-        <input type="text" placeholder="Введите пароль">
-        <button class="edit-btn">Войти</button>
+        <input type="password" placeholder="Введите пароль">
+        <button class="edit-btn">Войти</button> -->
+        <form action="/api/signin" method="POST" class="form">
+            <h3 class="h3">Вход</h3>
+            <fieldset class="fieldset">
+                <input type="email" placeholder="Введите почту" name="email">
+            </fieldset>
+            <fieldset class="fieldset">
+                <input type="password" placeholder="Введите пароль" name="password">
+            </fieldset>
+            <fieldset class="fieldset">
+                <button class="edit-btn" type="submit">Войти</button>
+            </fieldset>
+            <p>У Вас нет аккаунта? <a href="/registration">Зарегистрироваться</a>
+
+            </p>
+        </form>
     </div>
 </body>
 </html>
