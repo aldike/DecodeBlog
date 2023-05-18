@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
+const Category = require('../Categories/Categories');
+const User = require('../auth/User');
+const Blog = require('../blogs/blog')
 
 router.get('/', async(req, res) =>{
     const options = {}
