@@ -6,7 +6,7 @@ const Blog = require('../blogs/blog')
 
 router.get('/', async(req, res) =>{
     const options = {}
-    const categories = await Categories.findOne({key: req.query.category})
+    const categories = await Category.findOne({key: req.query.category})
     if(categories){
         options.category = categories._id
     }
@@ -16,10 +16,10 @@ router.get('/', async(req, res) =>{
         page = req.query.page
     }
     const totalBlogs = await Blog.count()
-    const allCategories = await Categories.find();
+    const allCategories = await Category.find();
     const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category');
     const user = req.user ? await User.findById(req.user._id) : {}
-    res.render("index", {Categories: allCategories, user, blogs, pages: Math.ceil(totalFilms / limit)})
+    res.render("index", {Categories: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
 })
 router.get('/myblogs/:id', (req, res) =>{
     res.render("myblogs", {user:req.user ? req.user: {}})
