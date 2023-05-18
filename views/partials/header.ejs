@@ -7,4 +7,17 @@
         <img src="images/icons/search.svg" alt="">
         Найти
     </button>
+    <div class="head-buttons">
+        <%if(user._id){%>
+            <a href="/myblogs/<%=user._id%>">
+                <div class="head-img">
+                    <img src="/images/avatar.png" alt="">
+                </div>
+            </a>
+        <%}else{%>
+            <a href="/registration" class="head-btn">Регистрация</a>
+            <a href="/login" class="head-btn">Вход</a>
+        <%}%>
+        
+    </div>
 </div>

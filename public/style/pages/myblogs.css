@@ -40,6 +40,7 @@
     font-size: 26px;
 }
 .edit-btn{
+    cursor: pointer;
     color: #fff;
     padding: 10px 10px;
     background: #00A2DC;

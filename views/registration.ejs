@@ -7,10 +7,6 @@
 <body>
     <header>
         <%-include('partials/header.ejs')  %>
-        <div class="head-buttons">
-            <a href="/registration" class="head-btn">Регистрация</a>
-            <a href="/login" class="head-btn">Вход</a>
-        </div>
     </header>
     <div class="login-fill">
         <h3 class="h3">Вход</h3>
@@ -30,5 +26,6 @@
             <button type="submit" class="edit-btn">Зарегистрироваться</button>
         </form>
     </div>
+    <%-include('partials/scripts.ejs')%>
 </body>
 </html>

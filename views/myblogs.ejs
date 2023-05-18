@@ -7,20 +7,15 @@
 <body>
     <header>
         <%-include('partials/header.ejs')  %>
-        <div class="head-buttons">
-            <div class="head-img">
-                <img src="/images/avatar.png" alt="">
-                <a href="/api/signout" class="edit-btn">Выход</a>
-            </div>
-            
-        </div>
     </header>
     <div class="container">
         <div class="main">
             <div class="main-content">
                 <div class="main-top">
                     <h3 class="h3">Мои блоги</h3>
-                    <button class="edit-btn">Новый блог</button>
+                    <a href="/new-blog">
+                        <button class="edit-btn">Новый блог</button>
+                    </a>
                 </div>
                 <div class="content">
                     <div class="content-img">
@@ -111,9 +106,12 @@
             <p style="font-weight: 700;"><%=user.full_name%></p>
             <p>В основном пишу про веб - разработку, на React & Redux</p>
             <p>285 постов за все время</p>
-            <button class="edit-btn">Регистрация</button>
+            <a href="/api/signout">
+                <button class="edit-btn">Выход</button>
+            </a>
+            
         </div>
     </div>
-    <script src="js/main.js"></script>
+    <%-include('partials/scripts.ejs')%>
 </body>
 </html>
