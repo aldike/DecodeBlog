@@ -16,7 +16,7 @@ const createBlog = async(req, res) =>{
                 image: `/images/blogs/${req.file.filename}`,
                 author: req.user._id
             }).save()
-            res.redirect(`/myblogs/${req.user._id}`)
+            res.redirect(`/myblogs`)
     }else{
         res.redirect('/new?error=1')
     }
