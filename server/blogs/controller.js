@@ -5,7 +5,9 @@ const path = require('path')
 const createBlog = async(req, res) =>{
     if(
         req.file &&
+        req.body.title &&
         req.body.title.length > 2 &&
+        req.body.description &&
         req.body.description.length > 2
         ){
             await new Blog({
@@ -16,7 +18,7 @@ const createBlog = async(req, res) =>{
             }).save()
             res.redirect(`/myblogs/${req.user._id}`)
     }else{
-        res.redirect('/new?error=1')
+        res.redirect('/newBlog?error=1')
     }
 }
 
@@ -47,7 +49,7 @@ const editBlog = async(req, res) =>{
             // })
             res.redirect('/myblogs/' + req.user._id)
         }else{
-            res.redirect(`/editblog/${req.body.id}?error=1`)
+            res.redirect(`/editBlog/${req.body.id}?error=1`)
         }
 }
 

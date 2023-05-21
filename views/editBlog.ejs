@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')  %>
+    <title>Blog</title>
+</head>
+<body>
+    <header>
+        <%-include('partials/header.ejs')  %>
+    </header>
+    <div class="container">
+        <div class="main">
+            <form action="/api/blogs/editBlog" method="post" class="new-blog" enctype="multipart/form-data">
+                <h3 class="h3">Редактировать блог</h3>
+                <input type="text" placeholder="Введите заголовок блога" name="title">
+                <button class="cat-select">
+                    Выберите категорию
+                    <img src="/images/icons/arrow-bot.svg" alt="">
+                </button>
+                <input type="file" class="select-img" name="image">
+                <textarea name="" id="" cols="30" rows="10" placeholder="Введите описание блога" name="description"></textarea>
+                <button class="edit-btn" style="width: 16%;">Создать</button>
+            </form>
+        </div>
+    </div>
+    <%-include('partials/scripts.ejs')%>
+</body>
+</html>

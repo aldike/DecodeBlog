@@ -30,10 +30,15 @@ router.get('/blog', (req, res) =>{
 router.get('/blog-nolog', (req, res) =>{
     res.render("blog-nolog", {user:req.user ? req.user: {}})
 })
-router.get('/new-blog', (req, res) =>{
-    res.render("new-blog", {user:req.user ? req.user: {}})
+router.get('/new', async(req, res) =>{
+    const categories = await Category.find()
+    res.render("newBlog", {categories: categories, user:req.user ? req.user: {}})
 })
-
+router.get('/edit', async(req, res) =>{
+    const categories = await Category.find()
+    const blog = await Blog.findById(req.params.id);
+    res.render("editBlog", {categories: categories, user:req.user ? req.user: {}})
+})
 router.get('/login', (req, res) =>{
     res.render("login", {user:req.user ? req.user: {}})
 })
