@@ -21,7 +21,8 @@ router.get('/', async(req, res) =>{
     const user = req.user ? await User.findById(req.user._id) : {}
     res.render("index", {Categories: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
 })
-router.get('/myblogs/:id', (req, res) =>{
+router.get('/myblogs/:id', async(req, res) =>{
+    const user = await User.findById(req.params.id)
     res.render("myblogs", {user:req.user ? req.user: {}})
 })
 router.get('/blog', (req, res) =>{

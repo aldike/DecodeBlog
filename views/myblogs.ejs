@@ -18,11 +18,15 @@
                     </a>
                 </div>
                 <div class="content">
+                    <% 
+                    if(user && user.bookmarkBlog && user.bookmarkBlog.length > 0){
+                        user.bookmarkBlog.forEach(blog => { 
+                    %>
                     <div class="content-img">
-                        <img src="/images/image1.png" alt="">
+                        <img src="<%= blog.image%>" alt="">
                     </div>
                     <div class="content-top">
-                        <h4 class="h4">Обзор Report Manager от Webix</h4>
+                        <h4 class="h4"><%= blog.title%></h4>
                         <p class="toggle-dropdown">
                             <img src="/images/icons/tripledot.svg" alt="">
                             Еще
@@ -32,13 +36,7 @@
                             <span>Удалить</span>
                         </div>
                     </div>
-                    <p>
-                        Осень 2020 года стала плодотворным временем для специалистов Webix.
-                        <br><br>
-                        Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье.
-                        <br><br>
-                        Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его
-                    </p>
+                    <p><%= blog.description%></p>
                     <div class="content-info">
                         <p>
                             <img src="/images/icons/calendar.svg" alt="">
@@ -61,6 +59,10 @@
                             Nast1289
                         </p>
                     </div>
+                    <% 
+                        })
+                    }
+                    %>
                 </div>
                 <div class="content">
                     <div class="content-img">

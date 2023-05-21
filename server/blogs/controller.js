@@ -18,7 +18,7 @@ const createBlog = async(req, res) =>{
             }).save()
             res.redirect(`/myblogs/${req.user._id}`)
     }else{
-        res.redirect('/newBlog?error=1')
+        res.redirect('/new?error=1')
     }
 }
 
