@@ -1,4 +1,4 @@
-const Categories = require('./Categories')
+const Category = require('./Categories')
 const data = [
     'Прогнозы в IT',
     'Веб-разработка',
@@ -13,10 +13,10 @@ const data = [
 ]
 
 async function writeDataCategory(){
-    const length = await Categories.count();
+    const length = await Category.count();
     if(length ==0){
         data.map((item, index) =>{
-            new Categories({
+            new Category({
                 name: item,
                 key: index
             }).save()

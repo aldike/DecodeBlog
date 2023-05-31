@@ -22,8 +22,31 @@ router.get('/', async(req, res) =>{
     res.render("index", {Categories: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
 })
 router.get('/myblogs/:id', async(req, res) =>{
-    const user = await User.findById(req.params.id)
-    res.render("myblogs", {user:req.user ? req.user: {}})
+    const options = {}
+    const categories = await Category.findOne({key: req.query.category})
+    if(categories){
+        options.category = categories._id
+    }
+    let page = 0
+    const limit = 3
+    if(req.query.page && req.query.page > 0){
+        page = req.query.page
+    }
+    if(req.query.search && req.query.search.length > 0){
+        options.$or = [
+            {
+                title: new RegExp(req.query.search, 'i')
+            }
+        ]
+        res.locals.search = req.query.search
+    }
+    const totalBlogs = await Blog.count();
+    const user = req.user ? await User.findById(req.user._id) : {}
+    const allCategories = await Category.find();
+    const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category');
+    if(user){
+        res.render("myblogs", {category: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
+    }
 })
 router.get('/blog', (req, res) =>{
     res.render("blog", {user:req.user ? req.user: {}})

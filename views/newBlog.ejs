@@ -13,14 +13,14 @@
             <form action="/api/blogs/new" method="post" class="new-blog" enctype="multipart/form-data">
                 <h3 class="h3">Новый блог</h3>
                 <input type="text" placeholder="Введите заголовок блога" name="title">
-                <select class="cat-select">
+                <select class="cat-select" name="category">
                     Выберите категорию
                     <% categories.forEach(category =>{ %>
                     <option value="<%= category._id %>"><%=category.name  %></option>
                     <% }) %>
                 </select>
                 <input type="file" class="select-img" name="image">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Введите описание блога" name="description"></textarea>
+                <textarea id="" cols="30" rows="10" placeholder="Введите описание блога" name="description"></textarea>
                 <button type="submit" class="edit-btn" style="width: 16%;">Создать</button>
             </form>
         </div>

@@ -18,9 +18,8 @@
                     </a>
                 </div>
                 <div class="content">
-                    <% 
-                    if(user && user.bookmarkBlog && user.bookmarkBlog.length > 0){
-                        user.bookmarkBlog.forEach(blog => { 
+                    <%  
+                        blogs.forEach(blog =>{
                     %>
                     <div class="content-img">
                         <img src="<%= blog.image%>" alt="">
@@ -59,45 +58,25 @@
                             Nast1289
                         </p>
                     </div>
-                    <% 
+                    <%
                         })
-                    }
                     %>
                 </div>
-                <div class="content">
-                    <div class="content-img">
-                        <img src="/images/image2.png" alt="">
-                    </div>
-                    <h4 class="h4">Обзор Report Manager от Webix</h4>
-                    <p>
-                        Осень 2020 года стала плодотворным временем для специалистов Webix.
-                        <br><br>
-                        Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье.
-                        <br><br>
-                        Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его
-                    </p>
-                    <div class="content-info">
-                        <p>
-                            <img src="/images/icons/calendar.svg" alt="">
-                            26.06.2020
-                        </p>
-                        <p>
-                            <img src="/images/icons/eye.svg" alt="">
-                            21
-                        </p>
-                        <p>
-                            <img src="/images/icons/shape.svg" alt="">
-                            4
-                        </p>
-                        <p>
-                            <img src="/images/icons/fill.svg" alt="">
-                            Веб-разработка
-                        </p>
-                        <p>
-                            <img src="/images/icons/user.svg" alt="">
-                            Nast1289
-                        </p>
-                    </div>
+                <div class="pages">
+                    <%
+                        let localsString = ''
+                        if(locals.genre){
+                            localsString = `genre=${locals.genre}&`
+                        }
+                        if(locals.search){
+                            localsString = `search=${locals.search}&`
+                        }
+                        for(let i = 0; i < pages; i++){
+                    %>
+                        <a href="?<%=localsString%>page=<%=i%>"><%=i + 1%></a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>

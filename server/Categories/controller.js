@@ -1,7 +1,7 @@
 const Category = require('./Categories')
 
 const getAllCategories = async(req, res) =>{
-    const data = await Categories.find()
+    const data = await Category.find()
     res.send({data})
 }
 

@@ -7,16 +7,19 @@ const createBlog = async(req, res) =>{
         req.file &&
         req.body.title &&
         req.body.title.length > 2 &&
+        req.body.category &&
+        req.body.category.length > 2 &&
         req.body.description &&
         req.body.description.length > 2
         ){
             await new Blog({
                 title: req.body.title,
+                category: req.body.category,
                 description: req.body.description,
                 image: `/images/blogs/${req.file.filename}`,
                 author: req.user._id
             }).save()
-            res.redirect(`/myblogs`)
+            res.redirect(`/myblogs/${req.user._id}`)
     }else{
         res.redirect('/new?error=1')
     }
