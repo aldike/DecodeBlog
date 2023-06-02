@@ -61,7 +61,7 @@ router.get('/new', async(req, res) =>{
 router.get('/edit', async(req, res) =>{
     const categories = await Category.find()
     const blog = await Blog.findById(req.params.id);
-    res.render("editBlog", {categories: allCategories, user:req.user ? req.user: {}})
+    res.render("editBlog", {categories: categories, user:req.user ? req.user: {}})
 })
 router.get('/login', (req, res) =>{
     res.render("login", {user:req.user ? req.user: {}})
