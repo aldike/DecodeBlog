@@ -1,4 +1,4 @@
-const Category = require('./Categories')
+const Category = require('./Category')
 const data = [
     'Прогнозы в IT',
     'Веб-разработка',

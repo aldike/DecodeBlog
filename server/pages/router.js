@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('../Categories/Categories');
+const Category = require('../Categories/Category');
 const User = require('../auth/User');
 const Blog = require('../blogs/blog')
 
@@ -55,13 +55,13 @@ router.get('/blog-nolog', (req, res) =>{
     res.render("blog-nolog", {user:req.user ? req.user: {}})
 })
 router.get('/new', async(req, res) =>{
-    const categories = await Category.find()
-    res.render("newBlog", {categories: categories, user:req.user ? req.user: {}})
+    const allCategories = await Category.find();
+    res.render("newBlog", {category: allCategories, user:req.user ? req.user: {}})
 })
 router.get('/edit', async(req, res) =>{
     const categories = await Category.find()
     const blog = await Blog.findById(req.params.id);
-    res.render("editBlog", {categories: categories, user:req.user ? req.user: {}})
+    res.render("editBlog", {categories: allCategories, user:req.user ? req.user: {}})
 })
 router.get('/login', (req, res) =>{
     res.render("login", {user:req.user ? req.user: {}})
