@@ -15,8 +15,20 @@
                 <h5 class="h5">Популярные и лучшие публикации по программированию для начинающих и профессиональных программистов и IT-специалистов.</h5>
                 <div class="content">
                     <div class="content-img">
-                        <img src="/images/image1.png" alt="">
+                        <img src="<%= blog.image%>" alt="">
                     </div>
+                    <div class="content-top">
+                        <h4 class="h4"><%= blog.title%></h4>
+                        <p class="toggle-dropdown">
+                            <img src="/images/icons/tripledot.svg" alt="">
+                            Еще
+                        </p>
+                        <div class="content-dropdown">
+                            <span>Редактировать</span>
+                            <span>Удалить</span>
+                        </div>
+                    </div>
+                    <p><%= blog.description%></p>
                     <div class="content-info">
                         <p>
                             <img src="/images/icons/calendar.svg" alt="">
@@ -39,70 +51,20 @@
                             Nast1289
                         </p>
                     </div>
-                    <div class="content-top">
-                        <h4 class="h4">Обзор Report Manager от Webix</h4>
-                        <p class="toggle-dropdown">
-                            <img src="/images/icons/tripledot.svg" alt="">
-                            Еще
-                        </p>
-                        <div class="content-dropdown">
-                            <span>Редактировать</span>
-                            <span>Удалить</span>
-                        </div>
-                    </div>
-                    <p>
-                        Осень 2020 года стала плодотворным временем для специалистов Webix.
-                        <br><br>
-                        Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье.
-                        <br><br>
-                        Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его
-                    </p>
-                    <h5 class="h5" style="text-align: start;">Что такое комплексные виджеты Webix?</h5>
-                    <p>
-                        В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.
-                        <br><br>Они уже готовы к интеграции в Ваше бизнес-приложение, что позволяет экономить рабочее время программистам. Это визуальное воплощение концепции low-code платформы, которой является Webix. Комплексные виджеты Webix сразу же готовы к работе, потому что они содержат функциональный фронт-энд слой и, при необходимости, снабжены различными опциями для бэк-энда.
-                        <br><br>Гибкая архитектура Webix позволяет легко настраивать эти приложения, расширять их функциональность и интегрировать в существующие решения.
-                    </p>
-                    <h4 class="h4">2 комментария</h4>
-                    <div class="user-comm">
-                        <div class="comm-user">
-                            <div class="comm-img">
-                                <img src="/images/avatar.png" alt="">
-                            </div>
-                            <h4 class="h4"><%=user.full_name%></h4>
-                        </div>
-                        <p>
-                            В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.
-                        </p>
-                    </div>
-                    <div class="user-comm">
-                        <div class="comm-user">
-                            <div class="comm-img">
-                                <img src="/images/avatar.png" alt="">
-                            </div>
-                            <h4 class="h4"><%=user.full_name%></h4>
-                        </div>
-                        <p>
-                            В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.
-                        </p>
-                    </div>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Введите текст комментария"></textarea>
-                    <button class="edit-btn" style="width: 16%;">Отправить</button>
                 </div>
             </div>
         </div>
-        <div class="categories">
-            <h3 class="h3">Категории</h3>
-            <a href="">Прогнозы в IT</a>
-            <a href="">Веб-разработка</a>
-            <a href="">Мобильная разработка</a>
-            <a href="">Фриланс</a>
-            <a href="">Алгоритмы</a>
-            <a href="">Тестирование IT систем</a>
-            <a href="">Разработка игр</a>
-            <a href="">Дизайн и юзабилити</a>
-            <a href="">Искуственный интеллект</a>
-            <a href="">Машинное обучение</a>
+        <div class="user">
+            <div class="user-img">
+                <img src="/images/avatar.png" alt="">
+            </div>
+            <p style="font-weight: 700;"><%=user.full_name%></p>
+            <p>В основном пишу про веб - разработку, на React & Redux</p>
+            <p>285 постов за все время</p>
+            <a href="/api/signout">
+                <button class="edit-btn">Выход</button>
+            </a>
+            
         </div>
     </div>
     <%-include('partials/scripts.ejs')%>

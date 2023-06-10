@@ -11,20 +11,25 @@
     <div class="container">
         <div class="main">
             <div class="main-content">
-                <h3 class="h3">Блоги по программированию</h3>
-                <h5 class="h5">Популярные и лучшие публикации по программированию для начинающих и профессиональных программистов и IT-специалистов.</h5>
                 <div class="content">
-                    <div class="content-img">
-                        <img src="/images/image1.png" alt="">
+                    <%  
+                        blogs.forEach(blog =>{
+                    %>
+                    <a href="/blog/<%=blog._id%>" class="content-img">
+                        <img src="<%= blog.image %>" alt="">
+                    </a>
+                    <div class="content-top">
+                        <h4 class="h4"><%= blog.title %></h4>
+                        <p class="toggle-dropdown">
+                            <img src="/images/icons/tripledot.svg" alt="">
+                            Еще
+                        </p>
+                        <div class="content-dropdown">
+                            <a href="/edit/<%=blog._id%>">Редактировать</a>
+                            <a>Удалить</a>
+                        </div>
                     </div>
-                    <h4 class="h4">Обзор Report Manager от Webix</h4>
-                    <p>
-                        Осень 2020 года стала плодотворным временем для специалистов Webix.
-                        <br><br>
-                        Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье.
-                        <br><br>
-                        Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его
-                    </p>
+                    <p><%= blog.description%></p>
                     <div class="content-info">
                         <p>
                             <img src="/images/icons/calendar.svg" alt="">
@@ -47,59 +52,33 @@
                             Nast1289
                         </p>
                     </div>
+                    <%
+                        })
+                    %>
                 </div>
-                <div class="content">
-                    <div class="content-img">
-                        <img src="/images/image2.png" alt="">
-                    </div>
-                    <h4 class="h4">Обзор Report Manager от Webix</h4>
-                    <p>
-                        Осень 2020 года стала плодотворным временем для специалистов Webix.
-                        <br><br>
-                        Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье.
-                        <br><br>
-                        Ноябрь продолжает тенденцию, и мы спешим поделиться с Вами новым комплексным виджетом Report Manager. Давайте рассмотрим его
-                    </p>
-                    <div class="content-info">
-                        <p>
-                            <img src="/images/icons/calendar.svg" alt="">
-                            26.06.2020
-                        </p>
-                        <p>
-                            <img src="/images/icons/eye.svg" alt="">
-                            21
-                        </p>
-                        <p>
-                            <img src="/images/icons/shape.svg" alt="">
-                            4
-                        </p>
-                        <p>
-                            <img src="/images/icons/fill.svg" alt="">
-                            Веб-разработка
-                        </p>
-                        <p>
-                            <img src="/images/icons/user.svg" alt="">
-                            Nast1289
-                        </p>
-                    </div>
+                <div class="pages">
+                    <%
+                        let localsString = ''
+                        if(locals.genre){
+                            localsString = `genre=${locals.genre}&`
+                        }
+                        if(locals.search){
+                            localsString = `search=${locals.search}&`
+                        }
+                        for(let i = 0; i < pages; i++){
+                    %>
+                        <a href="?<%=localsString%>page=<%=i%>"><%=i + 1%></a>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
         </div>
         <div class="categories">
             <h3 class="h3">Категории</h3>
-            <%Categories.forEach(category =>{%>
+            <%category.forEach(category =>{%>
                 <a href="?category=<%=category.key%>"><%=category.name %></a>
             <%})%>
-            <!-- <a href="">Прогнозы в IT</a>
-            <a href="">Веб-разработка</a>
-            <a href="">Мобильная разработка</a>
-            <a href="">Фриланс</a>
-            <a href="">Алгоритмы</a>
-            <a href="">Тестирование IT систем</a>
-            <a href="">Разработка игр</a>
-            <a href="">Дизайн и юзабилити</a>
-            <a href="">Искуственный интеллект</a>
-            <a href="">Машинное обучение</a> -->
         </div>
     </div>
     <%-include('partials/scripts.ejs')%>

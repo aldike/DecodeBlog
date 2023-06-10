@@ -37,11 +37,11 @@ input, textarea{
     background-color: #fff;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
-.content-dropdown span{
+.content-dropdown a{
     font-weight: 700;
     padding: 10px 15px;
 }
-.content-dropdown span:hover{
+.content-dropdown a:hover{
     color: red;
 }
 .show{

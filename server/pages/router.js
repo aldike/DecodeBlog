@@ -9,17 +9,29 @@ router.get('/', async(req, res) =>{
     const categories = await Category.findOne({key: req.query.category})
     if(categories){
         options.category = categories._id
+        res.locals.category = req.query.category
     }
     let page = 0
     const limit = 3
     if(req.query.page && req.query.page > 0){
         page = req.query.page
     }
-    const totalBlogs = await Blog.count()
+    if(req.query.search && req.query.search.length > 0){
+        options.$or = [
+            {
+                title: new RegExp(req.query.search, 'i')
+            },
+            {
+                description: new RegExp(req.query.search, 'i')
+            }
+        ]
+        res.locals.search = req.query.search
+    }
+    const totalBlogs = await Blog.count(options)
     const allCategories = await Category.find();
     const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category');
     const user = req.user ? await User.findById(req.user._id) : {}
-    res.render("index", {Categories: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
+    res.render("index", {category: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
 })
 router.get('/myblogs/:id', async(req, res) =>{
     const options = {}
@@ -48,20 +60,21 @@ router.get('/myblogs/:id', async(req, res) =>{
         res.render("myblogs", {category: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
     }
 })
-router.get('/blog', (req, res) =>{
-    res.render("blog", {user:req.user ? req.user: {}})
-})
-router.get('/blog-nolog', (req, res) =>{
-    res.render("blog-nolog", {user:req.user ? req.user: {}})
+router.get('/blog/:id', async(req, res) =>{
+    const blog = await Blog.findById(req.params.id).populate('category');
+    const user = req.user ? await User.findById(req.user._id) : {}
+
+    res.render("blog", {user, blog})
 })
 router.get('/new', async(req, res) =>{
     const allCategories = await Category.find();
-    res.render("newBlog", {category: allCategories, user:req.user ? req.user: {}})
+    res.render("newBlog", {categories: allCategories, user:req.user ? req.user: {}})
 })
-router.get('/edit', async(req, res) =>{
-    const categories = await Category.find()
+router.get('/edit/:id', async(req, res) =>{
+    const user = req.user ? await User.findById(req.user._id) : {}
+    const allCategories = await Category.find();
     const blog = await Blog.findById(req.params.id);
-    res.render("editBlog", {categories: categories, user:req.user ? req.user: {}})
+    res.render("editBlog", {categories: allCategories, user, blog})
 })
 router.get('/login', (req, res) =>{
     res.render("login", {user:req.user ? req.user: {}})

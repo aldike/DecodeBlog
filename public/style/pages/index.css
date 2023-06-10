@@ -62,7 +62,11 @@ p{
 .categories h3{
     padding-top: 8%;
 }
+.content-img{
+    height: 30vh;
+}
 .content-img img{
+    object-fit: contain;
     width: 100%;
     height: 100%;
 }

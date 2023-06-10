@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(){
-    let toggleDropdown = document.querySelector(".toggle-dropdown");
-    let contentDropdown = document.querySelector(".content-dropdown");
+    let toggleDropdowns = document.querySelectorAll(".toggle-dropdown");
+    let contentDropdowns = document.querySelectorAll(".content-dropdown");
 
-    toggleDropdown.addEventListener("click", function(){
-        contentDropdown.classList.toggle("show");
+    toggleDropdowns.forEach((toggleDropdown, index) => {
+        let contentDropdown = contentDropdowns[index];
+
+        toggleDropdown.addEventListener("click", function(){
+            contentDropdown.classList.toggle("show");
+        });
     });
 });

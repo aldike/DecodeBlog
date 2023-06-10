@@ -2,11 +2,13 @@
     <a href="/" class="logo">Decode Blog</a>
 </div>
 <div class="head-search">
-    <input type="text" placeholder="Поиск по блогам">
-    <button class="head-btn">
-        <img src="/images/icons/search.svg" alt="">
-        Найти
-    </button>
+    <form class="header-form" action="">
+        <input type="text" placeholder="Поиск по блогам" name="search">
+        <button class="head-btn">
+            <img src="/images/icons/search.svg" alt="">
+            Найти
+        </button>
+    </form>
     <div class="head-buttons">
         <%if(user._id){%>
             <a href="/myblogs/<%=user._id%>">
