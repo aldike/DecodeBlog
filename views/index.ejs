@@ -26,7 +26,7 @@
                         </p>
                         <div class="content-dropdown">
                             <a href="/edit/<%=blog._id%>">Редактировать</a>
-                            <a>Удалить</a>
+                            <a onclick="deleteBlog('<%=blog._id%>', '<%=blog.author._id%>')">Удалить</a>
                         </div>
                     </div>
                     <p><%= blog.description%></p>
@@ -59,8 +59,8 @@
                 <div class="pages">
                     <%
                         let localsString = ''
-                        if(locals.genre){
-                            localsString = `genre=${locals.genre}&`
+                        if(locals.category){
+                            localsString = `category=${locals.category}&`
                         }
                         if(locals.search){
                             localsString = `search=${locals.search}&`
@@ -76,8 +76,8 @@
         </div>
         <div class="categories">
             <h3 class="h3">Категории</h3>
-            <%category.forEach(category =>{%>
-                <a href="?category=<%=category.key%>"><%=category.name %></a>
+            <%categories.forEach(item =>{%>
+                <a href="?category=<%=item.key%>"><%=item.name %></a>
             <%})%>
         </div>
     </div>

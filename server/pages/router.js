@@ -31,13 +31,14 @@ router.get('/', async(req, res) =>{
     const allCategories = await Category.find();
     const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category');
     const user = req.user ? await User.findById(req.user._id) : {}
-    res.render("index", {category: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
+    res.render("index", {categories: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
 })
 router.get('/myblogs/:id', async(req, res) =>{
     const options = {}
     const categories = await Category.findOne({key: req.query.category})
     if(categories){
         options.category = categories._id
+        res.locals.category = req.query.category
     }
     let page = 0
     const limit = 3
@@ -52,12 +53,12 @@ router.get('/myblogs/:id', async(req, res) =>{
         ]
         res.locals.search = req.query.search
     }
-    const totalBlogs = await Blog.count();
+    const totalBlogs = await Blog.count(options);
     const user = req.user ? await User.findById(req.user._id) : {}
     const allCategories = await Category.find();
     const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category');
     if(user){
-        res.render("myblogs", {category: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
+        res.render("myblogs", {categories: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
     }
 })
 router.get('/blog/:id', async(req, res) =>{

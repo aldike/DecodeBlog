@@ -10,7 +10,7 @@
     </header>
     <div class="container">
         <div class="main">
-            <form action="/api/blogs/editBlog" method="post" class="new-blog" enctype="multipart/form-data">
+            <form action="/api/blogs/edit" method="post" class="new-blog" enctype="multipart/form-data">
                 <h3 class="h3">Редактировать блог</h3>
                 <input value="<%= blog.title %>" type="text" placeholder="Введите заголовок блога" name="title">
                 <select value="<%= blog.category._id %>" class="cat-select" name="category">
@@ -30,7 +30,7 @@
                 </select>
                 <input type="file" class="select-img" name="image">
                 <textarea name="" id="" cols="30" rows="10" placeholder="Введите описание блога" name="description"><%= blog.description %></textarea>
-                <button class="edit-btn" style="width: 16%;">Сохранить</button>
+                <button type="submit" class="edit-btn" style="width: 16%;">Сохранить</button>
             </form>
         </div>
     </div>

@@ -21,18 +21,18 @@
                     <%  
                         blogs.forEach(blog =>{
                     %>
-                    <div class="content-img">
-                        <img src="<%= blog.image%>" alt="">
-                    </div>
+                    <a href="/blog/<%=blog._id%>" class="content-img">
+                        <img src="<%= blog.image %>" alt="">
+                    </a>
                     <div class="content-top">
-                        <h4 class="h4"><%= blog.title%></h4>
+                        <h4 class="h4"><%= blog.title %></h4>
                         <p class="toggle-dropdown">
                             <img src="/images/icons/tripledot.svg" alt="">
                             Еще
                         </p>
                         <div class="content-dropdown">
-                            <span>Редактировать</span>
-                            <span>Удалить</span>
+                            <a href="/edit/<%=blog._id%>">Редактировать</a>
+                            <a onclick="deleteBlog('<%=blog._id%>', '<%=blog.author._id%>')">Удалить</a>
                         </div>
                     </div>
                     <p><%= blog.description%></p>
@@ -65,8 +65,8 @@
                 <div class="pages">
                     <%
                         let localsString = ''
-                        if(locals.genre){
-                            localsString = `genre=${locals.genre}&`
+                        if(locals.category){
+                            localsString = `category=${locals.category}&`
                         }
                         if(locals.search){
                             localsString = `search=${locals.search}&`

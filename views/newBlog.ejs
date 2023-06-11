@@ -15,7 +15,7 @@
                 <input type="text" placeholder="Введите заголовок блога" name="title">
                 <select class="cat-select" name="category">
                     Выберите категорию
-                    <% category.forEach(category =>{ %>
+                    <% categories.forEach(category =>{ %>
                     <option value="<%= category._id %>"><%=category.name  %></option>
                     <% }) %>
                 </select>

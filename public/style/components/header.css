@@ -15,7 +15,7 @@ header{
     color: #00A2DC;
 }
 .head-search{
-    width: 30%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,6 +37,7 @@ header{
     border-radius: 0px 4px 4px 0px;
 }
 .head-buttons{
+    display: flex;
     margin-right: 5%;
 }
 .head-btn{

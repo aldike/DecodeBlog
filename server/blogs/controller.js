@@ -28,7 +28,9 @@ const createBlog = async(req, res) =>{
 const editBlog = async(req, res) =>{
     if(
         req.file &&
+        req.body.title &&
         req.body.title.length > 2 &&
+        req.body.description &&
         req.body.description.length > 2
         ){
             const blogs = await Blog.findById(req.body.id);
@@ -52,7 +54,7 @@ const editBlog = async(req, res) =>{
             // })
             res.redirect('/myblogs/' + req.user._id)
         }else{
-            res.redirect(`/editBlog/${req.body.id}?error=1`)
+            res.redirect(`/edit/${req.body.id}?error=1`)
         }
 }
 
