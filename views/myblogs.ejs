@@ -21,7 +21,7 @@
                     <div class="content">
                         <%  
                             blogs.forEach(blog =>{
-                                if(loggedUser.id == blog.author){
+                                if(loggedUser && loggedUser.id == blog.author){
                         %>
                         <a href="/blog/<%=blog._id%>" class="content-img">
                             <img src="<%= blog.image %>" alt="">
@@ -77,7 +77,7 @@
                         </a>
                         <div class="content-top">
                             <h4 class="h4"><%= blog.title %></h4>
-                            <% if(loggedUser.id == blog.author.id){ %>
+                            <% if(loggedUser && loggedUser.id == blog.author.id){ %>
                                 <p class="toggle-dropdown">
                                 <img src="/images/icons/tripledot.svg" alt="">
                                 Еще
