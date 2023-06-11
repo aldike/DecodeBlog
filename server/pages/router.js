@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Category = require('../Categories/Category');
 const User = require('../auth/User');
-const Blog = require('../blogs/blog')
+const Blog = require('../blogs/blog');
+const blog = require('../blogs/blog');
 
 router.get('/', async(req, res) =>{
     const options = {}
@@ -29,9 +30,9 @@ router.get('/', async(req, res) =>{
     }
     const totalBlogs = await Blog.count(options)
     const allCategories = await Category.find();
-    const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category');
+    const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category').populate('author');
     const user = req.user ? await User.findById(req.user._id) : {}
-    res.render("index", {categories: allCategories, user, blogs, pages: Math.ceil(totalBlogs / limit)})
+    res.render("index", {categories: allCategories, user, loggedUser: req.user, blogs, pages: Math.ceil(totalBlogs / limit)})
 })
 router.get('/myblogs/:id', async(req, res) =>{
     const options = {}
@@ -58,14 +59,14 @@ router.get('/myblogs/:id', async(req, res) =>{
     const allCategories = await Category.find();
     const blogs = await Blog.find(options).limit(limit).skip(page * limit).populate('category');
     if(user){
-        res.render("myblogs", {categories: allCategories, user, loggedUser: req.user ? req.user: {}, blogs, pages: Math.ceil(totalBlogs / limit)})
+        res.render("myblogs", {params: req.params, categories: allCategories, user, loggedUser: req.user, blogs, pages: Math.ceil(totalBlogs / limit)})
     };
 })
 router.get('/blog/:id', async(req, res) =>{
-    const blog = await Blog.findById(req.params.id).populate('category');
+    const blog = await Blog.findById(req.params.id).populate('category').populate('author');
     const user = req.user ? await User.findById(req.user._id) : {}
 
-    res.render("blog", {user, blog})
+    res.render("blog", {user, loggedUser: req.user, blog})
 })
 router.get('/new', async(req, res) =>{
     const allCategories = await Category.find();

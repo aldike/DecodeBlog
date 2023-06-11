@@ -22,13 +22,13 @@ passport.use(new GitHubStrategy({
     clientID: '290aab93de8fd9d78246',
     clientSecret: '06ad84435cbaef1b7d608528c63fd604d92fb40b',
     callbackURL: "http://127.0.0.1:8000/api/auth/github",
-    scope: [ 'user:email' ]
+    scope: [ 'openid', 'user:email', 'profile' ]
   },
   async function(request, accessToken, refreshToken, profile, done) {
     const user = await User.find({githubId: profile.id});
     const newUser = await new User({
         githubId: profile.id,
-        full_name: profile.login,
+        full_name: profile.username,
     }).save()
     return done(null, newUser);
   }

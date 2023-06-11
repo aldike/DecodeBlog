@@ -20,6 +20,7 @@
                     </a>
                     <div class="content-top">
                         <h4 class="h4"><%= blog.title %></h4>
+                        <% if(loggedUser.id == blog.author.id){ %>
                         <p class="toggle-dropdown">
                             <img src="/images/icons/tripledot.svg" alt="">
                             Еще
@@ -28,12 +29,13 @@
                             <a href="/edit/<%=blog._id%>">Редактировать</a>
                             <a onclick="deleteBlog('<%=blog._id%>', '<%=blog.author._id%>')">Удалить</a>
                         </div>
+                        <% } %>
                     </div>
                     <p><%= blog.description%></p>
                     <div class="content-info">
                         <p>
                             <img src="/images/icons/calendar.svg" alt="">
-                            26.06.2020
+                            <%= blog.date%>
                         </p>
                         <p>
                             <img src="/images/icons/eye.svg" alt="">
@@ -45,12 +47,12 @@
                         </p>
                         <p>
                             <img src="/images/icons/fill.svg" alt="">
-                            Веб-разработка
+                            <%= blog.category.name %>
                         </p>
-                        <p>
+                        <a href="/myblogs/<%=blog.author._id%>">
                             <img src="/images/icons/user.svg" alt="">
-                            Nast1289
-                        </p>
+                            <%= blog.author.full_name %>
+                        </a>
                     </div>
                     <%
                         })

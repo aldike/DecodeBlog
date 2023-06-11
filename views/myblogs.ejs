@@ -17,51 +17,107 @@
                         <button class="edit-btn">Новый блог</button>
                     </a>
                 </div>
-                <div class="content">
-                    <%  
-                        blogs.forEach(blog =>{
-                    %>
-                    <a href="/blog/<%=blog._id%>" class="content-img">
-                        <img src="<%= blog.image %>" alt="">
-                    </a>
-                    <div class="content-top">
-                        <h4 class="h4"><%= blog.title %></h4>
-                        <p class="toggle-dropdown">
-                            <img src="/images/icons/tripledot.svg" alt="">
-                            Еще
-                        </p>
-                        <div class="content-dropdown">
-                            <a href="/edit/<%=blog._id%>">Редактировать</a>
-                            <a onclick="deleteBlog('<%=blog._id%>', '<%=blog.author._id%>')">Удалить</a>
+                <% if( params.id == user._id){%>
+                    <div class="content">
+                        <%  
+                            blogs.forEach(blog =>{
+                                if(loggedUser.id == blog.author){
+                        %>
+                        <a href="/blog/<%=blog._id%>" class="content-img">
+                            <img src="<%= blog.image %>" alt="">
+                        </a>
+                        <div class="content-top">
+                            <h4 class="h4"><%= blog.title %></h4>
+                            <p class="toggle-dropdown">
+                                <img src="/images/icons/tripledot.svg" alt="">
+                                Еще
+                            </p>
+                            <div class="content-dropdown">
+                                <a href="/edit/<%=blog._id%>">Редактировать</a>
+                                <a onclick="deleteBlog('<%=blog._id%>', '<%=blog.author._id%>')">Удалить</a>
+                            </div>
                         </div>
+                        <p><%= blog.description%></p>
+                        <div class="content-info">
+                            <p>
+                                <img src="/images/icons/calendar.svg" alt="">
+                                <%= blog.date%>
+                            </p>
+                            <p>
+                                <img src="/images/icons/eye.svg" alt="">
+                                21
+                            </p>
+                            <p>
+                                <img src="/images/icons/shape.svg" alt="">
+                                4
+                            </p>
+                            <p>
+                                <img src="/images/icons/fill.svg" alt="">
+                                <%= blog.category.name %>
+                            </p>
+                            <p>
+                                <img src="/images/icons/user.svg" alt="">
+                                <%= user.full_name %>
+                            </p>
+                        </div>
+                        <%
+                                }
+                            })
+                            
+                        %>
                     </div>
-                    <p><%= blog.description%></p>
-                    <div class="content-info">
-                        <p>
-                            <img src="/images/icons/calendar.svg" alt="">
-                            26.06.2020
-                        </p>
-                        <p>
-                            <img src="/images/icons/eye.svg" alt="">
-                            21
-                        </p>
-                        <p>
-                            <img src="/images/icons/shape.svg" alt="">
-                            4
-                        </p>
-                        <p>
-                            <img src="/images/icons/fill.svg" alt="">
-                            Веб-разработка
-                        </p>
-                        <p>
-                            <img src="/images/icons/user.svg" alt="">
-                            Nast1289
-                        </p>
+                <% }else{ %>
+                    <div class="content">
+                        <%  
+                            blogs.forEach(blog =>{
+                                if(params.id == blog.author){
+                        %>
+                        <a href="/blog/<%=blog._id%>" class="content-img">
+                            <img src="<%= blog.image %>" alt="">
+                        </a>
+                        <div class="content-top">
+                            <h4 class="h4"><%= blog.title %></h4>
+                            <% if(loggedUser.id == blog.author.id){ %>
+                                <p class="toggle-dropdown">
+                                <img src="/images/icons/tripledot.svg" alt="">
+                                Еще
+                                </p>
+                            <div class="content-dropdown">
+                                <a href="/edit/<%=blog._id%>">Редактировать</a>
+                                <a onclick="deleteBlog('<%=blog._id%>', '<%=blog.author._id%>')">Удалить</a>
+                            </div>
+                        <% } %>
+                        </div>
+                        <p><%= blog.description%></p>
+                        <div class="content-info">
+                            <p>
+                                <img src="/images/icons/calendar.svg" alt="">
+                                <%= blog.date%>
+                            </p>
+                            <p>
+                                <img src="/images/icons/eye.svg" alt="">
+                                21
+                            </p>
+                            <p>
+                                <img src="/images/icons/shape.svg" alt="">
+                                4
+                            </p>
+                            <p>
+                                <img src="/images/icons/fill.svg" alt="">
+                                <%= blog.category.name %>
+                            </p>
+                            <p>
+                                <img src="/images/icons/user.svg" alt="">
+                                <%= blog.author.full_name %>
+                            </p>
+                        </div>
+                        <%
+                                }
+                            })
+                            
+                        %>
                     </div>
-                    <%
-                        })
-                    %>
-                </div>
+                <% } %>
                 <div class="pages">
                     <%
                         let localsString = ''
@@ -84,7 +140,7 @@
             <div class="user-img">
                 <img src="/images/avatar.png" alt="">
             </div>
-            <p style="font-weight: 700;"><%=loggedUser.full_name%></p>
+            <p style="font-weight: 700;"><%=user.full_name%></p>
             <p>В основном пишу про веб - разработку, на React & Redux</p>
             <p>285 постов за все время</p>
             <a href="/api/signout">
